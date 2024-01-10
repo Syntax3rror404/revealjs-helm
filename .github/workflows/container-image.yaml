@@ -1,0 +1,23 @@
+name: Docker Image CI
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build container
+      uses: aevea/action-kaniko@v0.10.0
+      with:
+        image: revealjs
+        tag: latest
+        registry: ghcr.io
+        password: ${{secrets.CI_REGISTRY_PASSWORD}}
+        path: containerfile
+      
