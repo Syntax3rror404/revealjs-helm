@@ -19,5 +19,3 @@ jobs:
         tag: latest
         registry: ghcr.io
         password: ${{secrets.CI_REGISTRY_PASSWORD}}
-        build_file: containerfile
-      
