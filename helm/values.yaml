@@ -1,0 +1,111 @@
+---
+replicaCount: 1
+
+nameOverride: ""
+name: "revealjs"
+
+image:
+  repository: ghcr.io/syntax3rror404/revealjs-helm/revealjs
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 80
+  
+existingConfigMaps: []
+  # - name: mypresentation
+  #   mountPath: /usr/share/nginx/html/mypresentation
+  # - name: mybetterpresentation
+  #   mountPath: /usr/share/nginx/html/mybetterpresentation
+
+
+configMap:
+  enabled: false
+  presentations:
+    barebones.html: |
+      <!doctype html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <title>reveal.js - Barebones</title>
+          <link rel="stylesheet" href="../dist/reveal.css">
+        </head>
+        <body>
+
+          <div class="reveal">
+            <div class="slides">
+
+              <section>
+                <h2>Barebones Presentation</h2>
+                <p>This example contains the bare minimum includes and markup required to run a reveal.js presentation.</p>
+              </section>
+
+              <section>
+                <h2>No Theme</h2>
+                <p>There's no theme included, so it will fall back on browser defaults.</p>
+              </section>
+
+            </div>
+          </div>
+
+          <script src="../dist/reveal.js"></script>
+          <script>
+            Reveal.initialize();
+          </script>
+
+        </body>
+      </html>
+    remotemarkdown.html: |
+      <!doctype html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Remote markdown presentation</title>
+          <link rel="stylesheet" href="dist/reveal.css">
+          <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+          <!-- Theme used for syntax highlighting of code -->
+          <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+        </head>
+        <body>
+          <div class="reveal">
+            <div class="slides">
+              <section data-markdown="https://raw.githubusercontent.com/user/repo/branch/intro.md"
+                      data-separator="^--"
+                      data-separator-vertical="^\n\n"
+                      data-separator-notes="^Note:"
+                      data-charset="utf-8">
+              </section>
+
+              <section data-markdown="https://raw.githubusercontent.com/user/repo/branch/example.md"
+                      data-separator="^--"
+                      data-separator-vertical="^\n\n"
+                      data-separator-notes="^Note:"
+                      data-charset="utf-8">
+              </section>
+            </div>
+          </div>
+
+          <script src="dist/reveal.js"></script>
+          <script src="plugin/markdown/markdown.js"></script>
+          <script src="plugin/highlight/highlight.js"></script>
+          <script src="plugin/notes/notes.js"></script>
+          <script src="plugin/search/search.js"></script>
+          <script src="plugin/math/math.js"></script>
+          <script>
+            Reveal.initialize({
+              hash: true,
+              // Learn about plugins: https://revealjs.com/plugins/
+              plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealSearch, RevealMath ]
+            });
+          </script>
+        </body>
+      </html>
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: slides.example.com
+      paths: ["/"]
+  tls: []

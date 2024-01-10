@@ -17,7 +17,7 @@ RUN curl -L https://github.com/hakimel/reveal.js/archive/refs/tags/5.0.4.tar.gz 
 RUN chown -R nginx:nginx /usr/share/nginx/html
 
 # Switch to non-root user
-USER nginx
+USER 101
 
 # Start Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]

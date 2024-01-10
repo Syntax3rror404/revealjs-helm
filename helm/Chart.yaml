@@ -1,0 +1,7 @@
+---
+apiVersion: v2
+name: revealjs
+description: A helm chart for reveal.js
+type: application
+version: 0.1.0
+appVersion: "5.0.4"

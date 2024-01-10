@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "revealjs.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "revealjs.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "revealjs.name" . }}
+    spec:
+      containers:
+        - name: nginx
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 80
+      volumeMounts:
+        {{- if .Values.configMap.enabled }}
+        - name: config-volume
+          mountPath: /pfad/zu/mount
+        {{- end }}
+        {{- range .Values.existingConfigMaps }}
+        - name: {{ .name }}
+          mountPath: {{ .mountPath }}
+        {{- end }}
+  volumes:
+    {{- if .Values.configMap.enabled }}
+    - name: config-volume
+      configMap:
+        name: {{ include "revealjs.fullname" . }}-config
+    {{- end }}
+    {{- range .Values.existingConfigMaps }}
+    - name: {{ .name }}
+      configMap:
+        name: {{ .name }}
+    {{- end }}
