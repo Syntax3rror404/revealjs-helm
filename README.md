@@ -7,14 +7,14 @@ The container is based on the nginx container, with the revealjs tarball simply 
 
 For example, it is possible to call Markdowns from a git directly as remote Markdown and much more.
 
-## Deploy on kubernetes cluster
+## Deploy on kubernetes cluster (documentation wip)
 You can create your own values file with the html files included. The helm chart creates in this example the config mount by itself:
 ```
 1. Installing with default values inside reveal namespace:
 helm install reveal . --create-namespace -n reveal
 
 2. Installing with your own values inside reveal namespace:
-helm install reveal . --create-namespace -n reveal -f ../../youvalues.yaml
+helm install reveal . --create-namespace -n reveal -f ../../yourvalues.yaml
 
 3. You can also uninstalling it, after your presentation:
 helm uninstall reveal -n reveal
