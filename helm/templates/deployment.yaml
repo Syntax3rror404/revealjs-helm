@@ -31,7 +31,7 @@ spec:
       volumeMounts:
         {{- if .Values.configMap.enabled }}
         - name: config-volume
-          mountPath: /pfad/zu/mount
+          mountPath: /usr/share/nginx/html
         {{- end }}
         {{- range .Values.existingConfigMaps }}
         - name: {{ .name }}
