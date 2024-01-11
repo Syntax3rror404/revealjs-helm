@@ -7,7 +7,7 @@ The container is based on the nginx container, with the revealjs tarball simply 
 
 For example, it is possible to call Markdowns from a git directly as remote Markdown and much more.
 
-## Deploy on kubernetes cluster
+## Deploy on kubernetes cluster (documentation wip)
 You can create your own values file with the html files included. The helm chart creates in this example the config mount by itself:
 ```
 1. Installing with default values inside reveal namespace:
