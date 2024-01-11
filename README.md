@@ -1,5 +1,5 @@
 # reveal-js inside kubernetes!
-This Helm Chart deploys Reveal.js presentations using Nginx within a Kubernetes cluster, offering flexibility to host multiple presentations and allowing customization through ConfigMaps.
+This Helm Chart deploys Reveal.js presentations and server using Nginx within a Kubernetes cluster, offering flexibility to host multiple presentations and allowing customization through ConfigMaps.
 
 It allows the installation of revealjs as a server into a Kubernetes cluster and enables for example direct editing of one or more HTML or Markdown files as a ConfigMap, adding them as a Kubernetes resource.
 
