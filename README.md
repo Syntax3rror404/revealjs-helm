@@ -8,7 +8,7 @@ The container is based on the nginx container, with the revealjs tarball simply 
 For example, it is possible to call Markdowns from a git directly as remote Markdown and much more.
 
 ## How to use
-Installed you have a revealjs server based on Nginx installed and you can use them over ingress, portforwarding with kubectl etc.
+Installed you have a revealjs server based on Nginx installed and you can use them over ingress or portforwarding with kubectl etc.
 
 The Nginx is configured to ignore the index.html files, to force the "autoindex" filebrowser from nginx to show up, so you can select you presentation slide html without the need to write the path as url.
 
