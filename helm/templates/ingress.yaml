@@ -6,9 +6,9 @@ metadata:
   annotations:
     {{- toYaml .Values.ingress.annotations | nindent 4 }}
 spec:
-  ingressClassName: nginx-example
+  ingressClassName: {{ $.Values.ingress.class }}
   rules:
-    {{ .Values.ingress.class }}
+    {{- range .Values.ingress.hosts }}
     - host: {{ .host }}
       http:
         paths:
