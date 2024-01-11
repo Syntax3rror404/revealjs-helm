@@ -1,3 +1,5 @@
+LABEL org.opencontainers.image.source https://github.com/Syntax3rror404/revealjs-helm
+
 # Use the official Nginx image as a base
 FROM nginx:alpine3.18
 
