@@ -26,7 +26,7 @@ This is a list of used software
 | Tool | Version | Reason |
 | ------ | ------ |------ |
 | Revealjs   | 5.0.4 | Main shipped software |
-| Nginx (offical image) | nginx:alpine3.18 | webserver |
+| Nginx (offical image) | nginx:alpine3.18 | Webserver |
 | Kaniko (Image build) | -| Container builder |
 
 
