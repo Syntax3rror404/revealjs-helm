@@ -50,7 +50,7 @@ existingConfigMaps:
     mountPath: /usr/share/nginx/html/mybetterpresentation
 ```
 
-## Deploy on kubernetes cluster (documentation wip)
+## Deploy on kubernetes cluster
 You can create your own values file with the html files included. The helm chart creates in this example the config mount by itself:
 ```
 1. Installing with default values inside reveal namespace:
