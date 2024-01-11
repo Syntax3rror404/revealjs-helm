@@ -25,7 +25,7 @@ Example:
 ```
 
 ### Upload slides over helm deployment
-To add slides via helm values, you need set `configMap.enabled: true 
+To add slides via helm values, you need set `configMap.enabled: true`
 
 After that you can add as much html files as you want. For example:
 ```
