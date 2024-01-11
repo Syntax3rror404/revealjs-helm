@@ -5,7 +5,7 @@ nameOverride: ""
 name: "revealjs"
 
 image:
-  repository: ghcr.io/syntax3rror404/revealjs-helm/revealjs
+  repository: ghcr.io/syntax3rror404/revealjs-helm:master
   pullPolicy: IfNotPresent
   tag: "latest"
 

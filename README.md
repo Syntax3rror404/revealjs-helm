@@ -27,13 +27,14 @@ This is a list of used software
 | ------ | ----------- |
 | Revealjs   | 5.0.4 |
 | Nginx (offical image) | nginx:alpine3.18 |
+| Kaniko (Image build) | -|
 
 
 ## Local testing with image
 The Contaienr image are located at ghcr.
 With this example command, you can pull the image to you local env:
 ```
-nerdctl run ghcr.io/syntax3rror404/revealjs-helm/revealjs:latest
+nerdctl run ghcr.io/syntax3rror404/revealjs-helm:master
 ```
 <div align="center">
   MIT licence | Copyright © 2024 Marcel Zapf
