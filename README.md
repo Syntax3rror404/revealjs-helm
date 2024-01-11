@@ -14,7 +14,7 @@ You can create your own values file with the html files included. The helm chart
 helm install reveal . --create-namespace -n reveal
 
 2. Installing with your own values inside reveal namespace:
-helm install reveal . --create-namespace -n reveal -f ../../youvalues.yaml
+helm install reveal . --create-namespace -n reveal -f ../../yourvalues.yaml
 
 3. You can also uninstalling it, after your presentation:
 helm uninstall reveal -n reveal
