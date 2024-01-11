@@ -29,6 +29,9 @@ spec:
               path: /
               port: http
           volumeMounts:
+            - name: config-volume
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
             {{- if .Values.configMap.enabled }}
             - name: config-volume
               mountPath: /usr/share/nginx/html/slides
@@ -38,6 +41,9 @@ spec:
               mountPath: {{ .mountPath }}
             {{- end }}
       volumes:
+        - name: config-volume
+          configMap:
+            name: nginx-config
         {{- if .Values.configMap.enabled }}
         - name: config-volume
           configMap:
