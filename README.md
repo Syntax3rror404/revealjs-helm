@@ -23,11 +23,11 @@ helm uninstall reveal -n reveal
 ## Used tools
 This is a list of used software
 
-| Tool | Version |
-| ------ | ----------- |
-| Revealjs   | 5.0.4 |
-| Nginx (offical image) | nginx:alpine3.18 |
-| Kaniko (Image build) | -|
+| Tool | Version | Reason |
+| ------ | ------ |------ |
+| Revealjs   | 5.0.4 | Main shipped software |
+| Nginx (offical image) | nginx:alpine3.18 | webserver |
+| Kaniko (Image build) | -| Container builder |
 
 
 ## Local testing with image
