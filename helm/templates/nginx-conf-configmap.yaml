@@ -15,6 +15,7 @@ data:
         location / {
             root   /usr/share/nginx/html;
             index  index.html index.htm;
+            autoindex on;
         }
 
         #error_page  404              /404.html;
