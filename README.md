@@ -63,6 +63,20 @@ helm install revealjs . --create-namespace -n revealjs -f ../../yourvalues.yaml
 helm uninstall revealjs -n revealjs
 ```
 
+### Expose over ingress
+This is a example, how to expose this server over a cilium ingress controller with basic http:
+```
+ingress:
+  enabled: true
+  class: "cilium"
+  annotations:
+    ingress.cilium.io/loadbalancer-mode: shared
+    ingress.cilium.io/websocket: enabled
+  hosts:
+    - host: slides.example.com
+      paths: ["/"]
+  tls: []
+```
 ## Deploy with ArgoCD with html embedded slides configmap
 This is a example how to deploy this app with ArgoCD
 
