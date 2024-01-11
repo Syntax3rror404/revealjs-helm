@@ -5,9 +5,9 @@ nameOverride: ""
 name: "revealjs"
 
 image:
-  repository: ghcr.io/syntax3rror404/revealjs-helm:master
+  repository: ghcr.io/syntax3rror404/revealjs-helm
   pullPolicy: IfNotPresent
-  tag: "latest"
+  tag: "master"
 
 service:
   type: ClusterIP
