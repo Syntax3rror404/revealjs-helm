@@ -18,3 +18,7 @@ nerdctl run ghcr.io/syntax3rror404/revealjs-helm/revealjs:latest
 helm install reveal . --create-namespace -n reveal -f ../../youvalues.yaml
 helm uninstall reveal -n reveal
 ```
+
+<div align="center">
+  MIT licence | Copyright © 2024 Marcel Zapf
+</div>
