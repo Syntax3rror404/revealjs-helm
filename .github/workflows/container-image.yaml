@@ -5,17 +5,37 @@ on:
   pull_request:
     branches: [ "master" ]
 
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - uses: actions/checkout@v3
+    
+#     - name: Build container
+#       uses: aevea/action-kaniko@v0.10.0
+#       with:
+#         image: revealjs
+#         tag: latest
+#         registry: ghcr.io
+#         password: ${{secrets.CI_REGISTRY_PASSWORD}}
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Build container
-      uses: aevea/action-kaniko@v0.10.0
-      with:
-        image: revealjs
-        tag: latest
-        registry: ghcr.io
-        password: ${{secrets.CI_REGISTRY_PASSWORD}}
+      - uses: actions/checkout@v3
+      - uses: docker/metadata-action@v3
+        id: metadata
+        with:
+          images: ghcr.io/${{ github.repository }}
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{secrets.CI_REGISTRY_PASSWORD}}
+      - uses: int128/kaniko-action@v1
+        with:
+          push: true
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
