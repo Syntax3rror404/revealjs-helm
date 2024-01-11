@@ -104,8 +104,10 @@ configMap:
 
 ingress:
   enabled: false
-  class: ""
-  annotations: {}
+  class: "cilium"
+  annotations:
+    ingress.cilium.io/loadbalancer-mode: shared
+    ingress.cilium.io/websocket: enabled
   hosts:
     - host: slides.example.com
       paths: ["/"]
