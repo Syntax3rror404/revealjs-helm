@@ -37,14 +37,14 @@ spec:
         - name: {{ .name }}
           mountPath: {{ .mountPath }}
         {{- end }}
-  volumes:
-    {{- if .Values.configMap.enabled }}
-    - name: config-volume
-      configMap:
-        name: {{ include "revealjs.fullname" . }}-config
-    {{- end }}
-    {{- range .Values.existingConfigMaps }}
-    - name: {{ .name }}
-      configMap:
-        name: {{ .name }}
-    {{- end }}
+      volumes:
+        {{- if .Values.configMap.enabled }}
+        - name: config-volume
+          configMap:
+            name: {{ include "revealjs.fullname" . }}-config
+        {{- end }}
+        {{- range .Values.existingConfigMaps }}
+        - name: {{ .name }}
+          configMap:
+            name: {{ .name }}
+        {{- end }}
