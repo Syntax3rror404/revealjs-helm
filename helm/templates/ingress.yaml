@@ -16,7 +16,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ include "revealjs.fullname" . }}
+                name: {{ include "revealjs.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}
