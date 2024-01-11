@@ -28,15 +28,15 @@ spec:
             httpGet:
               path: /
               port: http
-      volumeMounts:
-        {{- if .Values.configMap.enabled }}
-        - name: config-volume
-          mountPath: /usr/share/nginx/html
-        {{- end }}
-        {{- range .Values.existingConfigMaps }}
-        - name: {{ .name }}
-          mountPath: {{ .mountPath }}
-        {{- end }}
+          volumeMounts:
+            {{- if .Values.configMap.enabled }}
+            - name: config-volume
+              mountPath: /usr/share/nginx/html
+            {{- end }}
+            {{- range .Values.existingConfigMaps }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
+            {{- end }}
       volumes:
         {{- if .Values.configMap.enabled }}
         - name: config-volume

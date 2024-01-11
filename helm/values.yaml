@@ -21,7 +21,7 @@ existingConfigMaps: []
 
 
 configMap:
-  enabled: false
+  enabled: true
   presentations:
     barebones.html: |
       <!doctype html>
