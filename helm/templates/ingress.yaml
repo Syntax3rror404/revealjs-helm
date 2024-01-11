@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "revealjs.fullname" . }}
+  name: {{ include "revealjs.fullname" $ }}
   annotations:
     {{- toYaml .Values.ingress.annotations | nindent 4 }}
 spec:
