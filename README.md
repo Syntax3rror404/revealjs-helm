@@ -7,6 +7,49 @@ The container is based on the nginx container, with the revealjs tarball simply 
 
 For example, it is possible to call Markdowns from a git directly as remote Markdown and much more.
 
+## How to use
+Installed you have a revealjs server based on Nginx installed and you can use them over ingress, portforwarding with kubectl etc.
+
+The Nginx is configured to ignore the index.html files, to force the "autoindex" filebrowser from nginx to show up, so you can select you presentation slide html without the need to write the path as url.
+
+In best case, you can store the md files in git or s3. Then you can use reveal js to pull the md files from remote:
+
+Example:
+```
+<section data-markdown="https://raw.githubusercontent.com/user/repo/branch/intro.md"
+        data-separator="^--"
+        data-separator-vertical="^\n\n"
+        data-separator-notes="^Note:"
+        data-charset="utf-8">
+</section>
+```
+
+### Upload slides over helm deployment
+To add slides via helm values, you need set `configMap.enabled: true 
+
+After that you can add as much html files as you want. For example:
+```
+configMap:
+  enabled: true
+  presentations:
+    example1.html: |
+      [HTML]
+    example2.html: |
+      [HTML]
+    example3.html: |
+      [HTML]
+```
+
+### Upload slides with your own config maps
+If you dont want, to upload or configure you slides over helm, you can also add your own config maps and you can refer there to automaticly mount them to your container: 
+```
+existingConfigMaps:
+  - name: mypresentation
+    mountPath: /usr/share/nginx/html/mypresentation
+  - name: mybetterpresentation
+    mountPath: /usr/share/nginx/html/mybetterpresentation
+```
+
 ## Deploy on kubernetes cluster (documentation wip)
 You can create your own values file with the html files included. The helm chart creates in this example the config mount by itself:
 ```
