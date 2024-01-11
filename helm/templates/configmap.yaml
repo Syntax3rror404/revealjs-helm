@@ -1,13 +1,12 @@
+{{- if .Values.configMap.enabled }}
 ---
-{{- range $name, $data := .Values.configMaps }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ $name }}
+  name: {{ include "revealjs.fullname" . }}-config
 data:
-  {{- range $key, $value := $data }}
-  {{ $key }}: |-
-    {{ $value | nindent 8 }}
+  {{- range $fileName, $fileContent := .Values.configMap.presentations }}
+  {{ $fileName }}: |-
+    {{ $fileContent | nindent 8 }}
   {{- end }}
----
 {{- end }}
