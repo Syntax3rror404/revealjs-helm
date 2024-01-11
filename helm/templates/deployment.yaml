@@ -46,9 +46,9 @@ spec:
         - name: nginx-config-volume
           configMap:
             name: nginx-conf
-        - name: nginx-vhostconfig-volume
+        - name: nginx-vhostconfigs-volume
           configMap:
-            name: nginx-confd
+            name: nginx-vhostconfigs
         {{- if .Values.configMap.enabled }}
         - name: config-volume
           configMap:
