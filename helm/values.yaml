@@ -104,6 +104,7 @@ configMap:
 
 ingress:
   enabled: false
+  class: ""
   annotations: {}
   hosts:
     - host: slides.example.com
