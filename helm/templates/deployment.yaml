@@ -32,6 +32,8 @@ spec:
             - name: config-volume
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
+            - name: confd-volume
+              mountPath: /etc/nginx/conf.d
             {{- if .Values.configMap.enabled }}
             - name: config-volume
               mountPath: /usr/share/nginx/html/slides
@@ -44,6 +46,9 @@ spec:
         - name: config-volume
           configMap:
             name: nginx-conf
+        - name: confd-volume
+          configMap:
+            name: nginx-confd
         {{- if .Values.configMap.enabled }}
         - name: config-volume
           configMap:
