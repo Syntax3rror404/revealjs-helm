@@ -12,9 +12,15 @@ data:
 
         #access_log  /var/log/nginx/host.access.log  main;
 
+        location /examples {
+            root   /usr/share/nginx/html;
+            #index  index.html index.htm;
+            autoindex on;
+        }
+
         location / {
             root   /usr/share/nginx/html;
-            index  index.html index.htm;
+            #index  index.html index.htm;
             autoindex on;
         }
 
