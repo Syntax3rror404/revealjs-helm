@@ -43,7 +43,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: nginx-config
+            name: nginx-conf
         {{- if .Values.configMap.enabled }}
         - name: config-volume
           configMap:
