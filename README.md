@@ -20,6 +20,85 @@ helm install revealjs . --create-namespace -n revealjs -f ../../yourvalues.yaml
 helm uninstall revealjs -n revealjs
 ```
 
+## Deploy with ArgoCD with html embedded slides configmap
+This is a example how to deploy this app with ArgoCD
+
+<details><summary><b>ArgoCD Application Manifest (click here)</b></summary>
+
+```
+project: default
+source:
+  repoURL: 'https://github.com/Syntax3rror404/revealjs-helm.git'
+  path: helm
+  targetRevision: HEAD
+  helm:
+    values: |
+      configMap:
+        enabled: true
+        presentations:
+          remotemarkdown.html: |
+            <!doctype html>
+            <html>
+              <head>
+                <meta charset="utf-8">
+                <title>Remote markdown presentation</title>
+                <link rel="stylesheet" href="../dist/reveal.css">
+                <link rel="stylesheet" href="../dist/theme/black.css" id="theme">
+                <!-- Theme used for syntax highlighting of code -->
+                <link rel="stylesheet" href="../plugin/highlight/monokai.css" id="highlight-theme">
+              </head>
+              <body>
+                <div class="reveal">
+                  <div class="slides">
+                    <section data-markdown="https://raw.githubusercontent.com/user/repo/branch/intro.md"
+                            data-separator="^--"
+                            data-separator-vertical="^\n\n"
+                            data-separator-notes="^Note:"
+                            data-charset="utf-8">
+                    </section>
+
+                    <section data-markdown="https://raw.githubusercontent.com/user/repo/branch/example.md"
+                            data-separator="^--"
+                            data-separator-vertical="^\n\n"
+                            data-separator-notes="^Note:"
+                            data-charset="utf-8">
+                    </section>
+                  </div>
+                </div>
+
+                <script src="../dist/reveal.js"></script>
+                <script src="../plugin/markdown/markdown.js"></script>
+                <script src="../plugin/highlight/highlight.js"></script>
+                <script src="../plugin/notes/notes.js"></script>
+                <script src="../plugin/search/search.js"></script>
+                <script src="../plugin/math/math.js"></script>
+                <script>
+                  Reveal.initialize({
+                    hash: true,
+                    // Learn about plugins: https://revealjs.com/plugins/
+                    plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealSearch, RevealMath ]
+                  });
+                </script>
+              </body>
+            </html>
+      ingress:
+        enabled: false
+        annotations: {}
+        hosts:
+          - host: revealjs.example.com
+            paths: ["/"]
+        tls: []
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: revealjs
+syncPolicy:
+  automated:
+    allowEmpty: true
+  syncOptions:
+    - CreateNamespace=true
+```
+</details>
+
 ## Used tools
 This is a list of used software
 
