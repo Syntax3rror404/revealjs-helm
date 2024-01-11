@@ -31,7 +31,7 @@ spec:
           volumeMounts:
             {{- if .Values.configMap.enabled }}
             - name: config-volume
-              mountPath: /usr/share/nginx/html
+              mountPath: /usr/share/nginx/html/slides
             {{- end }}
             {{- range .Values.existingConfigMaps }}
             - name: {{ .name }}
