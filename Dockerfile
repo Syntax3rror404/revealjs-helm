@@ -13,11 +13,11 @@ RUN apk add --no-cache curl tar
 # Download and unpack Reveal.js into the working directory
 RUN curl -L https://github.com/hakimel/reveal.js/archive/refs/tags/5.0.4.tar.gz | tar xz --strip-components=1
 
-# Change ownership of directories to support non-root user
-RUN chown -R nginx:nginx /usr/share/nginx/html
+# # Change ownership of directories to support non-root user
+# RUN chown -R nginx:nginx /usr/share/nginx/html
 
-# Switch to non-root user
-USER 101
+# # Switch to non-root user
+# USER 101
 
 # Start Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
