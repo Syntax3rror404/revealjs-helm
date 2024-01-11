@@ -29,10 +29,10 @@ spec:
               path: /
               port: http
           volumeMounts:
-            - name: config-volume
+            - name: nginx-config-volume
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
-            - name: confd-volume
+            - name: nginx-vhostconfig-volume
               mountPath: /etc/nginx/conf.d
             {{- if .Values.configMap.enabled }}
             - name: config-volume
@@ -43,10 +43,10 @@ spec:
               mountPath: {{ .mountPath }}
             {{- end }}
       volumes:
-        - name: config-volume
+        - name: nginx-config-volume
           configMap:
             name: nginx-conf
-        - name: confd-volume
+        - name: nginx-vhostconfig-volume
           configMap:
             name: nginx-confd
         {{- if .Values.configMap.enabled }}
