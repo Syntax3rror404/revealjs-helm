@@ -66,7 +66,7 @@ helm uninstall revealjs -n revealjs
 ## Deploy with ArgoCD with html embedded slides configmap
 This is a example how to deploy this app with ArgoCD
 
-<details><summary><b>ArgoCD Application Manifest (click here)</b></summary>
+<details><summary><b>ArgoCD Application Manifest example (click here)</b></summary>
 
 ```
 project: default
