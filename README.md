@@ -11,13 +11,13 @@ For example, it is possible to call Markdowns from a git directly as remote Mark
 You can create your own values file with the html files included. The helm chart creates in this example the config mount by itself:
 ```
 1. Installing with default values inside reveal namespace:
-helm install reveal . --create-namespace -n reveal
+helm install revealjs . --create-namespace -n revealjs
 
 2. Installing with your own values inside reveal namespace:
-helm install reveal . --create-namespace -n reveal -f ../../yourvalues.yaml
+helm install revealjs . --create-namespace -n revealjs -f ../../yourvalues.yaml
 
 3. You can also uninstalling it, after your presentation:
-helm uninstall reveal -n reveal
+helm uninstall revealjs -n revealjs
 ```
 
 ## Used tools
