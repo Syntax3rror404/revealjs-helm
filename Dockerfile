@@ -2,7 +2,7 @@
 FROM nginx:alpine3.18
 
 # Define a build-time variables
-ARG REVEAL_JS_VERSION=5.0.4
+ARG REVEAL_JS_VERSION=5.1.0
 
 # Set the working directory
 WORKDIR /usr/share/nginx/html
