@@ -1,5 +1,5 @@
 # Use the official Nginx image as a base
-FROM nginx:alpine3
+FROM nginx:alpine
 
 # Define a build-time variables
 ARG REVEAL_JS_VERSION=5.1.0
